@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/forex.css">
+    <title>Forex Converter</title>
+  </head>
+  <body class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} 
+      {% if messages %}
+        {% for category, message in messages %}
+        <li class="flash {{ category }}"">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} 
+      {% endwith %}
+
+    <div class="input-form">
+    <form action="/convert" method="POST">
+        <label for="fromCurrency">Converting from:</label>
+        <input type="text" name="from_currency" id="fromCurrency" />
+        <label for="toCurrency">Converting to:</label>
+        <input type="text" name="to_currency" id="toCurrency" />
+        <label for="amount">Amount:</label>
+        <input type="text" name="amount" id="amount" />
+        <button class="convert-btn">Convert</button>
+    </form>
+  </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+  </body>
+</html>
