@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, flash
-import requests
+#from flask_debugtoolbar import DebugToolbarExtension
 from valid_codes import currency_codes
-from forex import *
+from forex import validate_input
+import requests
 
 app = Flask(__name__)
-app.run(debug=True)
-app.secret_key = 'secretkey'
+#app.debug = True
+app.config['SECRET_KEY'] = 'secretkey'
+#toolbar = DebugToolbarExtension(app)
 
 
 ACCESS_KEY = 'f06a721a0225939cd799aaea33618173'
